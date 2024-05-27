@@ -10,6 +10,7 @@ import SlickCarousel from "./components/carousel/SlickCarousel";
 import sendMoneyImage from './assets/img/send-money.png'
 import banner1 from './assets/img/banner1.jpg'
 import banner2 from './assets/img/banner2.jpg'
+import CarouselItem2 from "./components/carousel/CarouselItem2";
 interface Props {
   emoji: string;
   hueA: number;
@@ -51,7 +52,59 @@ export default function Home() {
       unsubscribeY()
     }
   }, [])
+  const [isScrolledToSection, setIsScrolledToSection] = useState({
+    section0: false,
+    section1: false,
+    section2: false,
+    section3: false,
+    section4: false,
+  });
 
+  const section1Ref = useRef(null);
+  const section2Ref = useRef(null);
+  const section3Ref = useRef(null);
+  const section4Ref = useRef(null);
+  const section0Ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.getAttribute("id");
+          setIsScrolledToSection((prevState) => ({
+            ...prevState,
+            [String(id)]: entry.isIntersecting,
+          }));
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1,
+      }
+    );
+
+    const sections = [
+      section0Ref,
+      section1Ref,
+      section2Ref,
+      section3Ref,
+      section4Ref,
+    ];
+    sections.forEach((sectionRef) => {
+      if (sectionRef.current) {
+        observer.observe(sectionRef.current);
+      }
+    });
+
+    return () => {
+      sections.forEach((sectionRef) => {
+        if (sectionRef.current) {
+          observer.unobserve(sectionRef.current);
+        }
+      });
+    };
+  }, []);
   const controlsVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
@@ -72,10 +125,10 @@ export default function Home() {
             <div className="text-xl mt-10 text-[#264269] font-semibold">
               Web Agency
             </div>
-            <div className="text-6xl mt-4 text-[#264269] font-semibold">
+            <div className="text-4xl md:text-6xl mt-4 text-[#264269] font-semibold">
               There is a plus side
             </div>
-            <div className="text-6xl mt-4 text-[#264269] font-semibold">
+            <div className="text-4xl md:text-6xl mt-4 text-[#264269] font-semibold">
               to <span className="text-[#549bfe]">every purchase</span>
             </div>
             <div className="text-sm mt-8 rounded-full w-fit mx-auto px-4 py-1 text-white bg-[#264269] font-semibold">
@@ -109,21 +162,21 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className='w-full text-white  mt-[-30px] h-[80vh] text-center sticky top-0 bg-gradient-to-bl from-blue4 to-blue5'>
+      <section className='w-full text-white  mt-[-30px] h-[100vh] text-center sticky top-0 bg-gradient-to-bl from-blue4 to-blue5'>
         <div className="text-4xl font-semibold px-10 lg:px-[200px] text-start max-w-7xl mx-auto pt-40">
           With Agency,
         </div>
         <div className="text-4xl pt-2 text-[#537ff9] font-semibold px-10 lg:px-[200px] text-start max-w-7xl mx-auto">
           It Really Adds Up
         </div>
-        <div>
+        <div className="w-full overflow-x-scroll lg:overflow-x-hidden">
           <SlickCarousel />
         </div>
       </section>
       
       <section className='w-full text-center z-50 relative bg-white rounded-b-3xl overflow-hidden'>
-        <div className="absolute  top-[140px] left-0 right-0 md:w-[620px] mx-auto">
-          <p className="text-[50px] text-blue3 font-semibold">Get <span className="text-blue2">unlimited cash back </span> on your favorite brands</p>
+        <div className="absolute top-[35px] md:top-[140px] left-0 right-0 md:w-[620px] mx-6 md:mx-auto">
+          <p className="text-4xl md:text-[50px] text-blue3 font-semibold">Get <span className="text-blue2">unlimited cash back </span> on your favorite brands</p>
           <p className="text-lg text-blue3">
             Hundreds of cash back offers picked just for you. Save as many as you want. Earn 1, 2, 3, 4, 5% and more after you check out with PayPal.1 Check offers for details. 
             <span className="text-blue2 font-semibold italic cursor-pointer">
@@ -139,15 +192,15 @@ export default function Home() {
           src={"https://www.paypalobjects.com/marketing/web/US/en/quantum-leap/home/chapter2-desktop.webm#t=0.01"}
         />
       </section>
-      <section className='w-full text-center flex z-[49] relative bg-blue2 rounded-b-lg top-[-80px]'>
+      <section className='w-full text-center flex z-[49] relative bg-blue2 rounded-b-lg top-[-50px]'>
         <div className="w-full flex">
-          <div className="max-w-[1280px] mx-auto">
-            <div className="py-[140px] text-[52px] text-blue5 font-bold">
+          <div className="max-w-[1280px] mx-6 md:mx-auto">
+            <div className="py-[60px] md:py-[140px] text-4xl md:text-[52px] text-blue5 font-bold">
               Add another <span className="text-white">3% on top</span>
             </div>
             <div className="w-full md:flex mx-auto">
               <div className="w-full text-center flex">
-                <Image alt="" src={paypal} className="w-[300px] rotate-4 mx-auto"/>
+                <Image alt="" src={paypal} className={`w-[300px] rotate-4 mx-auto ${!isScrolledToSection.section0 ? 'translate-y-[-600px] -rotate-90' : ''} duration-1000`}/>
               </div>
               <div className="w-full">
                 <p className="text-white text-[48px] text-left">
@@ -159,6 +212,7 @@ export default function Home() {
                 <div className="bg-white text-blue2 w-[120px] rounded-full my-6 py-2 hover:bg-link-hover2 cursor-pointer">
                   Apply Now
                 </div>
+                <div id="section0" ref={section0Ref} />
                 <p className="text-white text-sm text-left mb-12">
                 Subject to credit approval.
                 </p>
@@ -168,13 +222,12 @@ export default function Home() {
         </div>
         
       </section>
-    
       <section 
-        className='w-full text-center flex z-[49] relative top-[-80px] h-[100vh]' 
+        className={`w-full text-center flex z-[49] relative top-[-60px] h-[100vh] ${isScrolledToSection.section1 ? '' : ''} duration-500`} 
         style={{ 
           backgroundImage: "url('http://localhost:3000/img/background.jpg')",
-          backgroundSize: 'cover', // Optional: Cover the entire section
-          backgroundPosition: 'center' // Optional: Center the background image
+          backgroundSize: `'cover'`,
+          backgroundPosition: 'center'
         }}
         >
         <div className="w-full flex">
@@ -195,11 +248,13 @@ export default function Home() {
             </div>
           </div>
         </div>
+        
       </section>
-      <section className='w-full text-center flex z-[49] relative  rounded-b-lg bg-[#F3F3F6] top-[-80px]'>
+        <div id="section1" ref={section1Ref} className=""/>
+      <section className='w-full text-center flex z-[49] relative  rounded-b-lg bg-[#F3F3F6] top-[-70px]'>
         <div className="w-full flex">
           <div className="max-w-[1280px] mx-auto">
-            <div className="w-full md:flex mx-auto my-24">
+            <div className="w-full md:flex mx-6 md:mx-auto my-24">
               <div className="w-full text-center flex">
                 <Image alt="" src={sendMoneyImage} className="w-[400px] rotate-4 mx-auto"/>
               </div>
@@ -208,7 +263,7 @@ export default function Home() {
                 Settle up with friends, <span className="text-blue2">fast and safe</span>
                 </p>
                 <p className="text-blue3 text-sm text-left">
-                  At the table or across the globe, it's the fast, secure way to get cash to your friends and family.6 
+                  At the table or across the globe, it&apos;s the fast, secure way to get cash to your friends and family.6 
                 </p>
                 <div className="text-white w-[120px] rounded-full my-6 py-2 bg-blue1 hover:bg-blue2 cursor-pointer">
                   Send Money
@@ -220,8 +275,9 @@ export default function Home() {
             </div>
           </div>
         </div>
+        
       </section>
-      <section className='w-full text-center flex z-[47] relative  rounded-b-lg bg-white top-[-120px] absolute'>
+      <section className='w-full text-center flex z-[47] relative  rounded-b-lg bg-white top-[-80px]'>
         <div className="w-full flex">
           <div className="max-w-[1280px] mx-auto mt-[120px]">
             <p className="text-[52px] text-blue3 font-bold">
@@ -231,23 +287,40 @@ export default function Home() {
             <div className="text-white w-[200px] rounded-full my-6 py-2 bg-blue1 hover:bg-blue2 cursor-pointer mx-auto">
               More About Security
             </div>
-            <div className="w-full max-w-[800px] h-[300px] rounded-full overflow-hidden hidden md:flex mb-[170px]"> 
-              <Image 
+            
+            <div className="w-full max-w-[800px] h-[300px] rounded-full overflow-hidden hidden md:flex mb-[30px]"> 
+              <Image
                 alt=""
                 src={banner1}
+                className={`${isScrolledToSection.section2 ? 'scale-125' : ''} duration-1000`}
               />
             </div>
-            <div className="w-[90vw] h-[90vw] rounded-xl overflow-hidden md:hidden mx-[5vw] mb-12"> 
+            <div id="section2" ref={section2Ref}/>
+            <div className="w-[90vw] h-[90vw] rounded-xl overflow-hidden md:hidden mx-[5vw]"> 
               <Image 
                 alt=""
                 src={banner2}
               />
             </div>
-            
-
+            <div className="text-2xl md:text-3xl text-blue3">
+              Discover even more ways to PayPal
+            </div>
+            <div className="md:flex md:space-x-4 mx-auto w-full md:w-[660px] my-2 space-y-2 md:space-y-0">
+              <CarouselItem2 description="Download the App" />
+              <CarouselItem2 description="Download the App" />
+            </div>
+            <div className="md:flex md:space-x-4 mx-auto w-full md:w-[660px] my-2 space-y-2 md:space-y-0 mb-6">
+              <CarouselItem2 description="Download the App" />
+              <CarouselItem2 description="Download the App" />
+            </div>
           </div>
         </div>
       </section>
+      <div className="relative top-[-80px] h-[120px] bg-white">
+        <div className="absolute top-[-20px] bottom-[-80px] right-0 left-0 bg-white">
+          
+        </div>
+      </div>
     </>
   );
 }

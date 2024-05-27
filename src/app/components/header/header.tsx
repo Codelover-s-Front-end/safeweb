@@ -5,7 +5,7 @@ export default function Header () {
   return(
     <div className="max-w-[1280px] w-full justify-between mx-auto py-5 flex border-b-1">
       <div className="flex space-x-2 px-4">
-        <a className="outline-none outline-0 hover:outline-1 outline-gray-500 border-none content-center text-center px-1 rounded-[4px] cursor-pointer" href="/">
+        <a className="outline-none outline-0 hover:outline-1 outline-gray-500 border-none text-center px-1 rounded-[4px] cursor-pointer" href="/">
           <Image 
             alt="" 
             src={logo}
@@ -13,27 +13,27 @@ export default function Header () {
             height={33}
           />
         </a>
-        <div className="lg:flex content-center align-middle space-x-2 hidden">
+        <div className="lg:flex content-center space-x-2 hidden pt-2">
           <a 
-            className="outline-none outline-0 hover:outline-1 outline-gray-500 border-none content-center text-center px-4 py-4 rounded-full h-[20px] cursor-pointer my-auto hover:text-blue2 hover:font-semibold" 
+            className="outline-none outline-0 hover:outline-1 outline-gray-500 border-none text-center px-4 rounded-full h-[20px] cursor-pointer hover:text-blue2 hover:font-semibold" 
             href="/"
           >
             Page1
           </a>
           <a 
-            className="outline-none outline-0 hover:outline-1 outline-gray-500 border-none content-center text-center px-4 py-4 rounded-full h-[20px] cursor-pointer my-auto hover:text-blue2 hover:font-semibold" 
+            className="outline-none outline-0 hover:outline-1 outline-gray-500 border-none text-center px-4 rounded-full h-[20px] cursor-pointer hover:text-blue2 hover:font-semibold" 
             href="/"
           >
             Page2
           </a>
           <a 
-            className="outline-none outline-0 hover:outline-1 outline-gray-500 border-none content-center text-center px-4 py-4 rounded-full h-[20px] cursor-pointer my-auto hover:text-blue2 hover:font-semibold" 
+            className="outline-none outline-0 hover:outline-1 outline-gray-500 border-none text-center px-4 rounded-full h-[20px] cursor-pointer hover:text-blue2 hover:font-semibold" 
             href="/"
           >
             Page3
           </a>
           <a 
-            className="outline-none outline-0 hover:outline-1 outline-gray-500 border-none content-center text-center px-4 py-4 rounded-full h-[20px] cursor-pointer my-auto hover:text-blue2 hover:font-semibold" 
+            className="outline-none outline-0 hover:outline-1 outline-gray-500 border-none text-center px-4 rounded-full h-[20px] cursor-pointer hover:text-blue2 hover:font-semibold" 
             href="/"
           >
             Page4
