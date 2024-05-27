@@ -24,7 +24,7 @@ export default function Footer () {
     return () => {
       unsubscribeY()
     }
-  }, [])
+  }, [scrollY])
 
   return(
     <motion.div 
