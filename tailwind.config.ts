@@ -23,7 +23,8 @@ const config: Config = {
         'gray1' : '#F3F3F6',
         'blue4' : '#001435',
         'blue5' : '#002C7C',
-        'link-hover' : '#A6D9E7'
+        'link-hover' : '#A6D9E7',
+        'link-hover2' : '#B9EFFC'
       }
     },
   },

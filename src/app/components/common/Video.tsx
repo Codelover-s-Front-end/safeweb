@@ -62,7 +62,8 @@ const VideoComponent = ({poster, src}:{poster:string, src:string}) => {
           exit="exit"
           variants={controlsVariants}
           transition={{ duration: 0.5 }}
-          ref={wrapperRef}>
+          ref={wrapperRef}
+          >
             <motion.video
               ref={videoRef}
                 playsInline
@@ -72,6 +73,7 @@ const VideoComponent = ({poster, src}:{poster:string, src:string}) => {
                 poster={poster}
                 src={src}                
                 typeof={"video/mp4; codecs=&quot;hvc1&quot;"} 
+                className='min-h-[60vh] sm:min-h-[50vh] object-cover'
             >
                 {/* <source src="https://www.paypalobjects.com/marketing/web/US/en/quantum-leap/home/hero/ql-home-page-hero-may-desktop-hevc.mp4#t=0.01" type="video/mp4; codecs=&quot;hvc1&quot;" /> */}
             </motion.video>
