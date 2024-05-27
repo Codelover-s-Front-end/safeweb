@@ -1,12 +1,35 @@
 'use client'
 import Image from "next/image";
 import { scroll } from "framer-motion/dom";
-import { motion, useScroll, useMotionValue, transform} from 'framer-motion'
+import { motion, useScroll, useMotionValue, transform, Variants} from 'framer-motion'
 import { useEffect, useState, useRef } from "react"
 
-import logo from './assets/img/icon-64.png'
+import paypal from './components/svg/paypal.svg'
 import VideoComponent from './components/common/Video';
 import SlickCarousel from "./components/carousel/SlickCarousel";
+import sendMoneyImage from './assets/img/send-money.png'
+import banner1 from './assets/img/banner1.jpg'
+import banner2 from './assets/img/banner2.jpg'
+interface Props {
+  emoji: string;
+  hueA: number;
+  hueB: number;
+}
+
+const cardVariants: Variants = {
+  offscreen: {
+    y: 300
+  },
+  onscreen: {
+    y: 50,
+    rotate: -10,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8
+    }
+  }
+};
 
 export default function Home() {
   const thresholdY = 0;
@@ -36,7 +59,7 @@ export default function Home() {
   };
   return (
     <>
-      <section  className="w-full bg-white mx-auto relative rounded-[40px] z-10 overflow-hidden">
+      <section  className="w-full bg-white mx-auto relative rounded-[40px] z-10 overflow-hidden h-[100vh]">
         <div className="max-w-7xl px-6 lg:px-10 mx-auto">
           <motion.div 
               initial={{ top:"-240px" }}
@@ -59,35 +82,10 @@ export default function Home() {
               Get Web Agency
             </div>
           </motion.div>
-          <div className="bg-white pt-[320px]">
+          <div className="bg-white pt-[40vh] sm:pt-[320px]">
             <VideoComponent 
               poster={"https://www.paypalobjects.com/marketing/web/US/en/quantum-leap/home/hero/ql-home-page-hero-may-desktop-cover.webp?quality=75"} 
               src={"https://www.paypalobjects.com/marketing/web/US/en/quantum-leap/home/hero/ql-home-page-hero-may-desktop-vp9.webm#t=0.01"}/>
-          {/* <motion.div
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                variants={controlsVariants}
-                transition={{ duration: 0.5 }}
-              >
-                <motion.video
-                  playsInline
-                  disableRemotePlayback
-                  disablePictureInPicture
-                  autoPlay
-                  poster="https://www.paypalobjects.com/marketing/web/US/en/quantum-leap/home/hero/ql-home-page-hero-may-desktop-cover.webp?quality=75"
-                  src="https://www.paypalobjects.com/marketing/web/US/en/quantum-leap/home/hero/ql-home-page-hero-may-desktop-vp9.webm#t=0.01"
-                  type="video/mp4; codecs=&quot;hvc1&quot;"
-                  onClick={() => {
-                    // Toggle play/pause on click
-                    if (document.querySelector('video').paused) {
-                      document.querySelector('video').play();
-                    } else {
-                      document.querySelector('video').pause();
-                    }
-                  }}
-                />
-              </motion.div> */}
           </div>
           <div 
             className="w-full relative">
@@ -121,27 +119,134 @@ export default function Home() {
         <div>
           <SlickCarousel />
         </div>
-      </section>  
-      <section className='w-full h-[2000px] text-center z-50 relative bg-white'>
-        <div className="absolute top-6 sm:top-[300px] left-0 right-0">
-          <div className="md:w-[620px] mx-auto">
-            <p className="text-[50px] text-blue3 font-semibold">Get <span className="text-blue2">unlimited cash back </span> on your favorite brands</p>
-            <p className="text-lg text-blue3">
-              Hundreds of cash back offers picked just for you. Save as many as you want. Earn 1, 2, 3, 4, 5% and more after you check out with PayPal.1 Check offers for details. 
-              <span className="text-blue2 font-semibold italic cursor-pointer">
-                <a>
-                  Terms and exclusions
-                </a>
-              </span>
-              apply. 
-            </p>
-          </div>
+      </section>
+      
+      <section className='w-full text-center z-50 relative bg-white rounded-b-3xl overflow-hidden'>
+        <div className="absolute  top-[140px] left-0 right-0 md:w-[620px] mx-auto">
+          <p className="text-[50px] text-blue3 font-semibold">Get <span className="text-blue2">unlimited cash back </span> on your favorite brands</p>
+          <p className="text-lg text-blue3">
+            Hundreds of cash back offers picked just for you. Save as many as you want. Earn 1, 2, 3, 4, 5% and more after you check out with PayPal.1 Check offers for details. 
+            <span className="text-blue2 font-semibold italic cursor-pointer">
+              <a>
+                Terms and exclusions
+              </a>
+            </span>
+            apply. 
+          </p>
         </div>
         <VideoComponent 
           poster={"https://www.paypalobjects.com/marketing/web/US/en/quantum-leap/home/chapter2-desktop-poster.jpg?quality=75"} 
           src={"https://www.paypalobjects.com/marketing/web/US/en/quantum-leap/home/chapter2-desktop.webm#t=0.01"}
         />
+      </section>
+      <section className='w-full text-center flex z-[49] relative bg-blue2 rounded-b-lg top-[-80px]'>
+        <div className="w-full flex">
+          <div className="max-w-[1280px] mx-auto">
+            <div className="py-[140px] text-[52px] text-blue5 font-bold">
+              Add another <span className="text-white">3% on top</span>
+            </div>
+            <div className="w-full md:flex mx-auto">
+              <div className="w-full text-center flex">
+                <Image alt="" src={paypal} className="w-[300px] rotate-4 mx-auto"/>
+              </div>
+              <div className="w-full">
+                <p className="text-white text-[48px] text-left">
+                  Just use your PayPal Cashback Mastercard
+                </p>
+                <p className="text-white text-sm text-left">
+                  Put it on the card and that’s another 3% back on your PayPal purchases.2 No rotating categories. No annual fee.3 Plus, no impact to your credit score if you’re declined.4
+                </p>
+                <div className="bg-white text-blue2 w-[120px] rounded-full my-6 py-2 hover:bg-link-hover2 cursor-pointer">
+                  Apply Now
+                </div>
+                <p className="text-white text-sm text-left mb-12">
+                Subject to credit approval.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
         
+      </section>
+    
+      <section 
+        className='w-full text-center flex z-[49] relative top-[-80px] h-[100vh]' 
+        style={{ 
+          backgroundImage: "url('http://localhost:3000/img/background.jpg')",
+          backgroundSize: 'cover', // Optional: Cover the entire section
+          backgroundPosition: 'center' // Optional: Center the background image
+        }}
+        >
+        <div className="w-full flex">
+          <div className="max-w-[1280px] mx-auto">
+            <div className="w-full max-w-[500px] bottom-0 mx-auto mt-24">  
+              <p className="text-white text-[52px]">
+                Earn interest on your cash back
+              </p>
+              <p className="text-white text-sm">
+                Roll your cash back into a high-yield PayPal Savings account. You could earn 4.30% APY.5
+              </p>
+              <div className="bg-white text-blue2 w-[240px] rounded-full my-6 py-2 hover:bg-link-hover2 cursor-pointer mx-auto">
+                Sign up for PayPal Saving
+              </div>
+              <p className="text-white text-sm">
+                PayPal Balance account is required to use PayPal Savings. PayPal is a financial technology company, not a bank. Banking services provided by Synchrony Bank, Member FDIC.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className='w-full text-center flex z-[49] relative  rounded-b-lg bg-[#F3F3F6] top-[-80px]'>
+        <div className="w-full flex">
+          <div className="max-w-[1280px] mx-auto">
+            <div className="w-full md:flex mx-auto my-24">
+              <div className="w-full text-center flex">
+                <Image alt="" src={sendMoneyImage} className="w-[400px] rotate-4 mx-auto"/>
+              </div>
+              <div className="w-full">
+                <p className="text-blue3 text-[48px] text-left">
+                Settle up with friends, <span className="text-blue2">fast and safe</span>
+                </p>
+                <p className="text-blue3 text-sm text-left">
+                  At the table or across the globe, it's the fast, secure way to get cash to your friends and family.6 
+                </p>
+                <div className="text-white w-[120px] rounded-full my-6 py-2 bg-blue1 hover:bg-blue2 cursor-pointer">
+                  Send Money
+                </div>
+                <p className="text-blue3 text-sm text-left mb-12">
+                Subject to credit approval.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className='w-full text-center flex z-[47] relative  rounded-b-lg bg-white top-[-120px] absolute'>
+        <div className="w-full flex">
+          <div className="max-w-[1280px] mx-auto mt-[120px]">
+            <p className="text-[52px] text-blue3 font-bold">
+              Safe, private, <span className="text-blue2"> secure</span>
+            </p>
+            <p className="text-black text-lg">Your data is encrypted, keeping your sensitive financial info safe.</p>
+            <div className="text-white w-[200px] rounded-full my-6 py-2 bg-blue1 hover:bg-blue2 cursor-pointer mx-auto">
+              More About Security
+            </div>
+            <div className="w-full max-w-[800px] h-[300px] rounded-full overflow-hidden hidden md:flex mb-[170px]"> 
+              <Image 
+                alt=""
+                src={banner1}
+              />
+            </div>
+            <div className="w-[90vw] h-[90vw] rounded-xl overflow-hidden md:hidden mx-[5vw] mb-12"> 
+              <Image 
+                alt=""
+                src={banner2}
+              />
+            </div>
+            
+
+          </div>
+        </div>
       </section>
     </>
   );

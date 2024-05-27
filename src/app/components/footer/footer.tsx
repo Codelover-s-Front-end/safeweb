@@ -34,7 +34,7 @@ export default function Footer () {
         display: isPastThreshold ? "block" : "none"
       }}
       className={`w-full text-center bg-gradient-to-bl sticky bottom-0 z-[6] from-blue4 to-blue5`}>
-      <div className='w-full max-w-7xl px-6 lg:px-10 mx-auto'>
+      <div className='w-full max-w-7xl px-6 lg:px-10 mx-auto pb-12'>
         <div className="w-full flex justify-start px-4 py-10 gap-x-4">
           <div className="flex items-center">
             <Image 
@@ -133,6 +133,21 @@ export default function Footer () {
             </div>
             <div className="w-full flex space-x-2">
               <p className="text-[7px] pt-[4px]  align-bottom text-white">1</p>
+              <p className="text-[12px] text-white">Check offers for details. <span> <a href="/" className="font-semibold underline">Terms and exclusions apply.</a></span> </p>
+            </div>
+
+            <div className="w-full flex space-x-2">
+              <p className="text-[7px] pt-[4px]  align-bottom text-white">1</p>
+              <p className="text-[12px] text-white">Check offers for details. <span> <a href="/" className="font-semibold underline">Terms and exclusions apply.</a></span> </p>
+            </div>
+
+            <div className="w-full flex space-x-2">
+              <p className="text-[12px] text-white">Check offers for details. <span> <a href="/" className="font-semibold underline">Terms and exclusions apply.</a></span> </p>
+            </div>
+            <div className="w-full flex space-x-2">
+              <p className="text-[12px] text-white">Check offers for details. <span> <a href="/" className="font-semibold underline">Terms and exclusions apply.</a></span> </p>
+            </div>
+            <div className="w-full flex space-x-2">
               <p className="text-[12px] text-white">Check offers for details. <span> <a href="/" className="font-semibold underline">Terms and exclusions apply.</a></span> </p>
             </div>
           </div>
