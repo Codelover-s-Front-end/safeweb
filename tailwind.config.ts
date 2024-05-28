@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        'custom-72': '4.5rem', // Custom font size equivalent to 72px
+      },
       borderWidth: {
         '1': '1px', // Define other border widths as needed
       },
@@ -23,6 +26,8 @@ const config: Config = {
         'gray1' : '#F3F3F6',
         'blue4' : '#001435',
         'blue5' : '#002C7C',
+        'blue6' : '#E3F9FE',
+        'gradient-blue' : '#001435',
         'link-hover' : '#A6D9E7',
         'link-hover2' : '#B9EFFC'
       }

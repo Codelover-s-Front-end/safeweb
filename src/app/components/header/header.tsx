@@ -1,42 +1,42 @@
 'use client'
 import Image from "next/image"
-import logo from './../../assets/img/icon-64.png'
+import logo from './../../components/svg/paypal.svg'
 export default function Header () {
   return(
-    <div className="max-w-[1280px] w-full justify-between mx-auto py-5 flex border-b-1">
+    <div className="max-w-[1440px] w-full justify-between mx-auto py-5 flex border-b-1">
       <div className="flex space-x-2 px-4">
-        <a className="outline-none outline-0 hover:outline-1 outline-gray-500 border-none text-center px-1 rounded-[4px] cursor-pointer" href="/">
+        <a className="outline-none outline-0 hover:outline-1 outline-gray-500 border-none text-center px-1 rounded-[4px] cursor-pointer mt-2 " href="/">
           <Image 
             alt="" 
             src={logo}
-            width={33}
-            height={33}
+            width={35}
+            height={35}
           />
         </a>
         <div className="lg:flex content-center space-x-2 hidden pt-2">
           <a 
-            className="outline-none outline-0 hover:outline-1 outline-gray-500 border-none text-center px-4 rounded-full h-[20px] cursor-pointer hover:text-blue2 hover:font-semibold" 
+            className="outline-none border-none text-center px-4 py-1 rounded-full h-[32px] cursor-pointer hover:text-blue2 hover:bg-blue6 font-semibold duration-500" 
             href="/"
           >
-            Page1
+            Personal
           </a>
           <a 
-            className="outline-none outline-0 hover:outline-1 outline-gray-500 border-none text-center px-4 rounded-full h-[20px] cursor-pointer hover:text-blue2 hover:font-semibold" 
+            className="outline-none border-none text-center px-4 py-1 rounded-full h-[32px] cursor-pointer hover:text-blue2 hover:bg-blue6 font-semibold duration-500" 
             href="/"
           >
-            Page2
+            Small Business
           </a>
           <a 
-            className="outline-none outline-0 hover:outline-1 outline-gray-500 border-none text-center px-4 rounded-full h-[20px] cursor-pointer hover:text-blue2 hover:font-semibold" 
+            className="outline-none border-none text-center px-4 py-1 rounded-full h-[32px] cursor-pointer hover:text-blue2 hover:bg-blue6 font-semibold duration-500" 
             href="/"
           >
-            Page3
+            Enterprise
           </a>
           <a 
-            className="outline-none outline-0 hover:outline-1 outline-gray-500 border-none text-center px-4 rounded-full h-[20px] cursor-pointer hover:text-blue2 hover:font-semibold" 
+            className="outline-none border-none text-center px-4 py-1 rounded-full h-[32px] cursor-pointer hover:text-blue2 hover:bg-blue6 font-semibold duration-500" 
             href="/"
           >
-            Page4
+            Developer
           </a>
         </div>
       </div>
