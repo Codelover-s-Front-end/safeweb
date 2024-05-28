@@ -5,12 +5,12 @@ import { motion, useScroll, useMotionValue, transform, Variants} from 'framer-mo
 import { useEffect, useState, useRef } from "react"
 
 import paypal from './components/svg/paypal.svg'
-import VideoComponent from './components/common/Video';
-import SlickCarousel from "./components/carousel/SlickCarousel";
+import VideoComponent from '../../components/common/Video';
+import SlickCarousel from "../../components/carousel/SlickCarousel";
 import sendMoneyImage from './assets/img/send-money.png'
 import banner1 from './assets/img/banner1.jpg'
 import banner2 from './assets/img/banner2.jpg'
-import CarouselItem2 from "./components/carousel/CarouselItem2";
+import CarouselItem2 from "../../components/carousel/CarouselItem2";
 interface Props {
   emoji: string;
   hueA: number;
@@ -175,9 +175,9 @@ export default function Home() {
       </section>
       
       <section className={`w-full text-center z-50 relative bg-white rounded-b-3xl overflow-hidden `}>
-        <div className={`absolute top-[35px] md:top-[190px] left-0 right-0 md:w-[620px] mx-6 md:mx-auto ${isScrolledToSection.section3? '': 'md:translate-y-[80px]'} duration-1000`}>
-          <p className="text-3xl md:text-6xl md:text-[50px] text-blue3 font-bold">Get <span className="text-blue2">unlimited cash back </span> on your favorite brands</p>
-          <p className="text-sm md:text-lg text-blue3 mt-6">
+        <div className={`absolute top-[35px] md:top-[190px] left-0 right-0 md:w-[620px] mx-6 md:mx-auto ${isScrolledToSection.section3? '': 'translate-y-[80px]'} duration-1000`}>
+          <p className="text-4xl md:text-6xl md:text-[50px] text-blue3 font-bold">Get <span className="text-blue2">unlimited cash back </span> on your favorite brands</p>
+          <p className="text-lg text-blue3 mt-6">
             Hundreds of cash back offers picked just for you. Save as many as you want. Earn 1, 2, 3, 4, 5% and more after you check out with PayPal.1 Check offers for details. 
             <span className="text-blue2 font-semibold italic ">
               <a className="cursor-pointer" href="/">
@@ -203,7 +203,7 @@ export default function Home() {
             </div>
             <div className="w-full md:flex mx-auto">
               <div className="w-full text-center flex">
-                <Image alt="" src={paypal} className={`w-[300px] mx-auto ${!isScrolledToSection.section0 ? 'translate-y-[-660px] -rotate-90' : 'md:translate-y-[-80px] -rotate-12'} duration-1000`}/>
+                <Image alt="" src={paypal} className={`w-[300px] mx-auto ${!isScrolledToSection.section0 ? 'translate-y-[-660px] -rotate-90' : 'translate-y-[-80px] -rotate-12'} duration-1000`}/>
               </div>
               <div className="w-full">
                 <p className="text-white text-[48px] text-left font-bold">
@@ -212,11 +212,11 @@ export default function Home() {
                 <p className="text-white text-sm text-left">
                   Put it on the card and that’s another 3% back on your PayPal purchases.2 No rotating categories. No annual fee.3 Plus, no impact to your credit score if you’re declined.4
                 </p>
-                <div id="section0" ref={section0Ref} />
                 <div className="bg-white text-blue3 w-[120px] rounded-full my-6 py-2 hover:bg-link-hover2 cursor-pointer font-bold">
                   Apply Now
                 </div>
-                <p className="text-white text-sm text-left mb-6 md:mb-36">
+                <div id="section0" ref={section0Ref} />
+                <p className="text-white text-sm text-left mb-36">
                 Subject to credit approval.
                 </p>
               </div>
@@ -226,17 +226,17 @@ export default function Home() {
         
       </section>
       <section 
-        className={`w-full text-center flex z-[49] relative top-[-60px] h-[50vh] md:h-[100vh] duration-500`} 
+        className={`w-full text-center flex z-[49] relative top-[-60px] h-[100vh] ${isScrolledToSection.section1 ? '' : ''} duration-500`} 
         style={{ 
           backgroundImage: "url('http://localhost:3000/img/background.jpg')",
-          backgroundSize: `${isScrolledToSection.section1 ? '200%' : '160%'} `,
+          backgroundSize: `'cover'`,
           backgroundPosition: 'center'
         }}
         >
         <div className="w-full flex">
           <div className="max-w-[1280px] mx-auto">
-            <div className="w-full max-w-[500px] bottom-0 mx-auto mt-6 md:mt-24">  
-              <p className="text-white font-bold text-3xl md:text-6xl mb-6">
+            <div className="w-full max-w-[500px] bottom-0 mx-auto mt-24">  
+              <p className="text-white font-bold text-6xl mb-6">
                 Earn interest on your cash back
               </p>
               <p className="text-white text-sm font-bold">
@@ -259,10 +259,10 @@ export default function Home() {
           <div className="max-w-[1280px] mx-auto">
             <div className="w-full md:flex mx-6 md:mx-auto my-24">
               <div className="w-full text-center flex">
-                <Image alt="" src={sendMoneyImage} className="w-[90%] md:w-[400px] rotate-4 mx-auto"/>
+                <Image alt="" src={sendMoneyImage} className="w-[400px] rotate-4 mx-auto"/>
               </div>
-              <div className="w-[90%">
-                <p className="text-blue3 text-3xl md:text-6xl font-bold text-left">
+              <div className="w-full">
+                <p className="text-blue3 text-4xl md:text-6xl font-bold text-left">
                 Settle up with friends, <span className="text-blue2">fast and safe</span>
                 </p>
                 <p className="text-blue3 text-lg text-left font-bold mt-6">
@@ -282,7 +282,7 @@ export default function Home() {
       </section>
       <section className='w-full text-center flex z-[47] relative  rounded-b-lg bg-white top-[-80px]'>
         <div className="w-full flex">
-          <div className="max-w-[1280px] mx-auto mt-[60px] md:mt-[120px]">
+          <div className="max-w-[1280px] mx-auto mt-[120px]">
             <p className="text-4xl md:text-6xl text-blue3 font-bold">
               Safe, private, <span className="text-blue2"> secure</span>
             </p>
@@ -291,7 +291,7 @@ export default function Home() {
               More About Security
             </div>
             
-            <div className="w-full max-w-[1200px] h-[500px] rounded-full overflow-hidden hidden md:flex mb-[30px]"> 
+            <div className="w-full max-w-[800px] h-[300px] rounded-full overflow-hidden hidden md:flex mb-[30px]"> 
               <Image
                 alt=""
                 src={banner1}
@@ -305,14 +305,14 @@ export default function Home() {
                 src={banner2}
               />
             </div>
-            <div className="text-2xl md:text-3xl text-blue3 font-bold mt-6">
+            <div className="text-2xl md:text-3xl text-blue3 font-bold">
               Discover even more ways to PayPal
             </div>
-            <div className="md:flex md:space-x-4 md:mx-auto w-full my-2 space-y-2 md:space-y-0 mt-16">
+            <div className="md:flex md:space-x-4 mx-auto w-full my-2 space-y-2 md:space-y-0 mt-16">
               <CarouselItem2 description="Download the App" />
               <CarouselItem2 description="Download the App" />
             </div>
-            <div className="md:flex md:space-x-4 md:mx-auto w-full my-2 space-y-2 md:space-y-0 mb-28">
+            <div className="md:flex md:space-x-4 mx-auto w-full my-2 space-y-2 md:space-y-0 mb-28">
               <CarouselItem2 description="Download the App" />
               <CarouselItem2 description="Download the App" />
             </div>
