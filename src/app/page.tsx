@@ -228,7 +228,7 @@ export default function Home() {
       <section 
         className={`w-full text-center flex z-[49] relative top-[-60px] h-[50vh] md:h-[100vh] duration-500`} 
         style={{ 
-          backgroundImage: "url('http://localhost:3000/img/background.jpg')",
+          backgroundImage: "url('/img/background.jpg')",
           backgroundSize: `${isScrolledToSection.section1 ? '200%' : '160%'} `,
           backgroundPosition: 'center'
         }}
