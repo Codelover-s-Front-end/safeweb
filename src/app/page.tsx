@@ -4,7 +4,7 @@ import { scroll } from "framer-motion/dom";
 import { motion, useScroll, useMotionValue, transform, Variants} from 'framer-motion'
 import { useEffect, useState, useRef } from "react"
 
-import paypal from './components/svg/paypal.svg'
+import card from './components/svg/card.svg'
 import VideoComponent from './components/common/Video';
 import SlickCarousel from "./components/carousel/SlickCarousel";
 import sendMoneyImage from './assets/img/send-money.png'
@@ -51,7 +51,7 @@ export default function Home() {
     return () => {
       unsubscribeY()
     }
-  }, [])
+  }, [scrollY])
   const [isScrolledToSection, setIsScrolledToSection] = useState({
     section0: false,
     section1: false,
@@ -115,23 +115,21 @@ export default function Home() {
       <section  className="w-full bg-white mx-auto relative rounded-[40px] z-10 overflow-hidden h-[100vh]">
         <div className="max-w-7xl px-6 lg:px-10 mx-auto">
           <motion.div 
-              initial={{ top:"-240px" }}
-              animate={{ top:!isPastThreshold?"0":"-200px",
-                          // scale:!isPastThreshold?1:0.5,
-                          // opacity:!isPastThreshold?1:0.5,
-                        }}
-              transition={{ duration:0.8 }}
-              className="w-full absolute top-0 left-0 text-center">
-            <div className="text-xl mt-10 text-[#264269] font-semibold">
+            initial={{ top:"-240px" }}
+            animate={{ top:!isPastThreshold?"0":"-200px"}}
+            transition={{ duration:0.8 }}
+            className="w-full absolute top-0 left-0 text-center"
+          >
+            <div className="text-xl mt-10 text-blue5 font-bold">
               Web Agency
             </div>
-            <div className="text-4xl md:text-6xl mt-4 text-[#264269] font-semibold">
+            <div className="text-4xl md:text-custom-72 mt-4 text-blue3 font-bold">
               There is a plus side
             </div>
-            <div className="text-4xl md:text-6xl mt-4 text-[#264269] font-semibold">
-              to <span className="text-[#549bfe]">every purchase</span>
+            <div className="text-4xl md:text-custom-72 mt-4 text-blue3 font-bold">
+              to <span className="text-blue2">every purchase</span>
             </div>
-            <div className="text-sm mt-8 rounded-full w-fit mx-auto px-4 py-1 text-white bg-[#264269] font-semibold">
+            <div className="text-sm mt-8 rounded-full w-fit mx-auto px-4 py-2 text-white bg-[#264269] font-semibold cursor-pointer">
               Get Web Agency
             </div>
           </motion.div>
@@ -144,10 +142,7 @@ export default function Home() {
             className="w-full relative">
             <motion.div 
               initial={{ bottom:"-30vh" }}
-              animate={{ bottom:!isPastThreshold?"0":"-30vh",
-                          // scale:!isPastThreshold?1:0.5,
-                          // opacity:!isPastThreshold?1:0.5,
-                        }}
+              animate={{ bottom:!isPastThreshold?"0":"-30vh"}}
               transition={{ duration:0.8 }}
               className="fixed w-full flex justify-center items-end bottom-0 left-0 h-[30vh] pb-16 bg-gradient-to-b from-transparent to-white">
               <div className="flex justify-between gap-3">
@@ -162,11 +157,12 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className='w-full text-white  mt-[-30px] h-[100vh] text-center sticky top-0 bg-gradient-to-bl from-blue4 to-blue5'>
-        <div className="text-4xl md:text-6xl font-bold px-10 lg:px-[00px] text-start max-w-7xl mx-auto pt-40">
+
+      <section className='sticky top-0 w-full text-white h-[100vh] text-center bg-gradient-to-bl from-gradient-blue to-blue1'>
+        <div className="text-4xl md:text-custom-72 font-bold px-10 lg:px-[00px] text-start max-w-7xl mx-auto pt-40">
           With Agency,
         </div>
-        <div className="text-4xl md:text-6xl pt-2 text-[#537ff9] font-semibold px-10 lg:px-[0px] text-start max-w-7xl mx-auto">
+        <div className="text-4xl md:text-custom-72 pt-8 text-[#537ff9] font-semibold px-10 lg:px-[0px] text-start max-w-7xl mx-auto">
           It Really Adds Up
         </div>
         <div className="w-full overflow-x-scroll lg:overflow-x-hidden">
@@ -175,9 +171,9 @@ export default function Home() {
       </section>
       
       <section className={`w-full text-center z-50 relative bg-white rounded-b-3xl overflow-hidden `}>
-        <div className={`absolute top-[35px] md:top-[190px] left-0 right-0 md:w-[620px] mx-6 md:mx-auto ${isScrolledToSection.section3? '': 'md:translate-y-[80px]'} duration-1000`}>
-          <p className="text-3xl md:text-6xl md:text-[50px] text-blue3 font-bold">Get <span className="text-blue2">unlimited cash back </span> on your favorite brands</p>
-          <p className="text-sm md:text-lg text-blue3 mt-6">
+        <div className={`absolute top-[35px] md:top-[190px] left-0 right-0 md:w-[750px] mx-6 md:mx-auto ${isScrolledToSection.section3? '': 'md:translate-y-[80px]'} duration-1000`}>
+          <p className="text-3xl md:text-6xl text-blue3 font-bold" style={{ lineHeight: '60px' }}>Get <span className="text-blue2">unlimited cash back </span> on your favorite brands</p>
+          <p className="text-sm md:text-xl text-blue3 mt-6">
             Hundreds of cash back offers picked just for you. Save as many as you want. Earn 1, 2, 3, 4, 5% and more after you check out with PayPal.1 Check offers for details. 
             <span className="text-blue2 font-semibold italic ">
               <a className="cursor-pointer" href="/">
@@ -198,25 +194,25 @@ export default function Home() {
       <section className='w-full text-center flex z-[49] relative bg-blue2 rounded-b-lg top-[-50px]'>
         <div className="w-full flex">
           <div className="max-w-[1280px] mx-6 md:mx-auto">
-            <div className="py-[60px] md:py-[140px] text-4xl md:text-6xl text-blue5 font-bold">
+            <div className="py-[60px] md:pt-[240px] pb-[120px] text-4xl md:text-custom-72 text-blue3 font-bold">
               Add another <span className="text-white">3% on top</span>
             </div>
             <div className="w-full md:flex mx-auto">
               <div className="w-full text-center flex">
-                <Image alt="" src={paypal} className={`w-[300px] mx-auto ${!isScrolledToSection.section0 ? 'translate-y-[-660px] -rotate-90' : 'md:translate-y-[-80px] -rotate-12'} duration-1000`}/>
+                <Image alt="" src={card} className={`w-[300px] md:w-[450px] mx-auto ${!isScrolledToSection.section0 ? 'translate-y-[-660px] md:translate-y-[-900px] -rotate-90' : 'translate-y-[-50px] md:translate-y-[-80px] -rotate-12'} duration-1000`}/>
               </div>
               <div className="w-full">
                 <p className="text-white text-[48px] text-left font-bold">
                   Just use your PayPal Cashback Mastercard
                 </p>
-                <p className="text-white text-sm text-left">
+                <p className="text-white text-lg text-left font-bold">
                   Put it on the card and that’s another 3% back on your PayPal purchases.2 No rotating categories. No annual fee.3 Plus, no impact to your credit score if you’re declined.4
                 </p>
                 <div id="section0" ref={section0Ref} />
                 <div className="bg-white text-blue3 w-[120px] rounded-full my-6 py-2 hover:bg-link-hover2 cursor-pointer font-bold">
                   Apply Now
                 </div>
-                <p className="text-white text-sm text-left mb-6 md:mb-36">
+                <p className="text-white text-lg text-left font-bold mb-6 md:mb-[160px]">
                 Subject to credit approval.
                 </p>
               </div>
@@ -236,7 +232,7 @@ export default function Home() {
         <div className="w-full flex">
           <div className="max-w-[1280px] mx-auto">
             <div className="w-full max-w-[500px] bottom-0 mx-auto mt-6 md:mt-24">  
-              <p className="text-white font-bold text-3xl md:text-6xl mb-6">
+              <p className="text-white font-bold text-3xl md:text-custom-72 mb-6" style={{ lineHeight: '60px' }}>
                 Earn interest on your cash back
               </p>
               <p className="text-white text-sm font-bold">
@@ -262,7 +258,7 @@ export default function Home() {
                 <Image alt="" src={sendMoneyImage} className="w-[90%] md:w-[400px] rotate-4 mx-auto"/>
               </div>
               <div className="w-[90%">
-                <p className="text-blue3 text-3xl md:text-6xl font-bold text-left">
+                <p className="text-blue3 text-3xl md:text-custom-72 font-bold text-left" style={{ lineHeight: '60px' }}>
                 Settle up with friends, <span className="text-blue2">fast and safe</span>
                 </p>
                 <p className="text-blue3 text-lg text-left font-bold mt-6">
@@ -283,7 +279,7 @@ export default function Home() {
       <section className='w-full text-center flex z-[47] relative  rounded-b-lg bg-white top-[-80px]'>
         <div className="w-full flex">
           <div className="max-w-[1280px] mx-auto mt-[60px] md:mt-[120px]">
-            <p className="text-4xl md:text-6xl text-blue3 font-bold">
+            <p className="text-4xl md:text-custom-72 text-blue3 font-bold">
               Safe, private, <span className="text-blue2"> secure</span>
             </p>
             <p className="text-black text-lg font-bold mt-6">Your data is encrypted, keeping your sensitive financial info safe.</p>
@@ -319,11 +315,11 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <div className="relative top-[-80px] h-[120px] bg-white">
+      {/* <div className="relative top-[-80px] h-[120px] bg-white">
         <div className="absolute top-[-20px] bottom-[-80px] right-0 left-0 bg-white">
           
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
